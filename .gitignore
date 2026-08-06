@@ -17,6 +17,7 @@
 !pkgs/**
 !overlays/**
 !scripts/**
+!config/**
 
 # Private local overrides (not committed)
 home/lukem/git-identity-private.nix
