@@ -1,41 +1,11 @@
 #home.nix
 { config, pkgs, inputs, lib, ... }:
 
-let
-  privateGitIdentityPath = ./git-identity-private.nix;
-  privateGitIdentity =
-    if builtins.pathExists privateGitIdentityPath
-    then import privateGitIdentityPath
-    else {
-      defaultName = "Your Name";
-      schoolName = "your-school-username";
-      defaultEmail = "your-email@example.com";
-      schoolEmail = "your-school-email@example.edu";
-    };
-in
 {
   home.username = "lukem";
   home.homeDirectory = "/home/lukem";
   home.stateVersion = "25.05";
 
-
-	programs.git = {
-		enable = true;
-		includes = [
-		  {
-		    condition = "gitdir:~/Projects/School/";
-		    contents = {
-          settings.user.name = privateGitIdentity.schoolName;
-          settings.user.email = privateGitIdentity.schoolEmail;
-		    };
-		  }
-		];
-		settings = {
-				init.defaultBranch = "main";
-        user.name = privateGitIdentity.defaultName;
-        user.email = privateGitIdentity.defaultEmail;
-		};
-	};
 	programs.vscode = {
     enable = true;
     package = pkgs.vscode;
@@ -74,7 +44,7 @@ in
 		  # echo git config on start
 			[[ $- == *i* ]] && {
 				echo "Git profile:"
-				git config --global user.email
+				git config user.email
 			}
 
 		'';
