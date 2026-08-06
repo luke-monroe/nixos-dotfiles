@@ -1,0 +1,22 @@
+# Ignore everything to allow whitelisting
+*
+# Allow directories to be traversed
+!*/
+
+# Allow repository metadata
+!.gitignore
+!README.md
+!LICENSE
+!flake.nix
+!flake.lock
+
+# Allow configuration
+!hosts/**
+!home/**
+!modules/**
+!pkgs/**
+!overlays/**
+!scripts/**
+
+# Private local overrides (not committed)
+home/lukem/git-identity-private.nix
