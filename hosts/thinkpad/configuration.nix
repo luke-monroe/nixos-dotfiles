@@ -58,8 +58,13 @@
   };
 
   # ── Display manager ───────────────────────────────────────────────────
-    services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
+    services.displayManager.sddm = {
+      enable = true;
+      theme = "breeze";
+      wayland.enable = true;
+      enableHidpi = true;
+    };
 
     xdg.portal = {
       enable = true;
