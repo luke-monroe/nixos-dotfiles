@@ -23,6 +23,8 @@
     ollama
 
     spotify
+    librepods
+    
     davinci-resolve
     kdePackages.kate
     libreoffice
