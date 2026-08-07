@@ -14,8 +14,6 @@
     ];
   };
   home.packages = with pkgs; [
-    mission-center
-
     firefox
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser
     chromium
@@ -29,8 +27,6 @@
     kdePackages.kate
     libreoffice
     kdePackages.kdeconnect-kde
-
-    
   ];
 
   programs.bash = {

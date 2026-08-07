@@ -58,12 +58,7 @@
   };
 
   # ── Display manager ───────────────────────────────────────────────────
-    services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "breeze";
-    };
-
+    services.displayManager.sddm.enabled = true;
     services.desktopManager.plasma6.enable = true;
 
     xdg.portal = {
@@ -119,6 +114,10 @@
   };
 
   # ── System packages ────────────────────────────────────────────────────
+  environment.plasma6.excludePackages = with pkgs; [ 
+    kdePackages.discover 
+    kdePackages.qrca
+  ];
   environment.systemPackages = with pkgs; [
     vim
     git
