@@ -58,7 +58,7 @@
   };
 
   # ── Display manager ───────────────────────────────────────────────────
-    services.displayManager.sddm.enabled = true;
+    services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
 
     xdg.portal = {
