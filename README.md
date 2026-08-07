@@ -20,26 +20,11 @@ This repository contains my personal NixOS configuration, managed as a Nix flake
 
 ### `flake.nix`
 
-The repository root is a Nix flake that exposes one NixOS configuration:
-
-* `nixosConfigurations.thinkpad`
-
-This output combines:
-
-* the system configuration in `hosts/thinkpad`
-* the Home Manager configuration in `home/lukem/home.nix`
-
-Home Manager is integrated into the NixOS configuration, so rebuilding the system also applies the user configuration.
+Flake.nix is the entry point for building the nix configuration. It brings together the system configuration in `hosts/thinkpad` and the Home Manager configuration in `home/lukem/home.nix`
 
 ## Usage
 
 From the repository root:
-
-### Show available flake outputs
-
-```bash
-nix flake show
-```
 
 ### Build the system without activating it
 
@@ -52,24 +37,23 @@ sudo nixos-rebuild build --flake .#thinkpad
 ```bash
 sudo nixos-rebuild switch --flake .#thinkpad
 ```
+### Update flake
 
-This command updates both:
+App versions are pinned in `flake.lock` so you must specifically update it with:
 
-* the NixOS system
-* the Home Manager configuration for `lukem`
+```bash
+nix flake update
+```
 
-There is no need to run `home-manager switch`.
+### Useful aliases
+
+I have set up some aliases in home.nix so instead of running the above commands you can just run nix-u to build and switch to the configuration or nix-a to update the flake, build, and switch to the configuration. 
+
 
 ## Setting Up on a New Machine
 
 1. Install NixOS.
-2. Clone this repository.
-
-```bash
-git clone <repository-url> ~/nixos-dotfiles
-cd ~/nixos-dotfiles
-```
-
+2. Clone this repository into your home directory.
 3. Copy the generated hardware configuration into the host directory.
 
 ```bash
@@ -109,35 +93,9 @@ Contains the NixOS system configuration, including:
 
 Contains the Home Manager configuration, including:
 
-* Hyprland configuration
+* desktop environment / display manager configuration
 * shell configuration
 * Git configuration
 * editor configuration
 * user packages
 * application configuration
-
-## Useful Commands
-
-Rebuild after making changes:
-
-```bash
-sudo nixos-rebuild switch --flake .#thinkpad
-```
-
-Upgrade all flake inputs and rebuild:
-
-```bash
-sudo nixos-rebuild switch --upgrade --flake .#thinkpad
-```
-
-Update `flake.lock`:
-
-```bash
-nix flake update
-```
-
-Inspect available outputs:
-
-```bash
-nix flake show
-```

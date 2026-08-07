@@ -38,7 +38,8 @@
     shellAliases = {
       btw = "echo i use nixos, btw";
       nix-a = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
-      nix-u = "sudo nixos-rebuild switch --upgrade --flake ~/nixos-dotfiles#thinkpad";
+      nix-u = "nix flake update \n
+               sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
     };
 		initExtra = ''
 		  # echo git config on start
