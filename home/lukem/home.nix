@@ -50,4 +50,32 @@
 
 		'';
 	};
+  programs.bash.bashrcExtra = ''
+    dgpu() {
+      local nv intel
+      for c in /dev/dri/card*; do
+        case "$(cat /sys/class/drm/$(basename "$c")/device/vendor 2>/dev/null)" in
+          0x10de) nv=$c ;;
+          0x8086) intel=$c ;;
+        esac
+      done
+      mkdir -p ~/.config/plasma-workspace/env
+      echo "export KWIN_DRM_DEVICES=\"$nv:$intel\"" > ~/.config/plasma-workspace/env/kwin-gpu.sh
+      chmod +x ~/.config/plasma-workspace/env/kwin-gpu.sh
+      echo "NVIDIA set primary ($nv). Log out/in to apply."
+    }
+
+    igpu() {
+      rm -f ~/.config/plasma-workspace/env/kwin-gpu.sh
+      echo "Intel set primary (default). Log out/in to apply."
+    }
+
+    gpu-status() {
+      [ -f ~/.config/plasma-workspace/env/kwin-gpu.sh ] \
+        && echo "Configured: NVIDIA primary" \
+        || echo "Configured: Intel primary (default)"
+      echo "Active this session:"
+      qdbus org.kde.KWin /KWin supportInformation | grep -A2 "OpenGL vendor"
+    }
+  '';
 }
