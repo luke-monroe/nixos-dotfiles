@@ -26,6 +26,7 @@
     librepods
     
     davinci-resolve
+    video-downloader
     libreoffice
 
     kdePackages.kate
