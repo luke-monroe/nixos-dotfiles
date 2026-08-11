@@ -27,6 +27,7 @@
     
     davinci-resolve
     video-downloader
+    vlc
     libreoffice
 
     kdePackages.kate
