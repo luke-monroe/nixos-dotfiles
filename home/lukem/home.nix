@@ -26,8 +26,10 @@
     librepods
     
     davinci-resolve
-    kdePackages.kate
     libreoffice
+
+    kdePackages.kate
+    kdePackages.kclock
     kdePackages.kdeconnect-kde
   ];
 
