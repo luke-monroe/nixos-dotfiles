@@ -27,6 +27,7 @@
     # media
     spotify
     librepods
+    discord
     
     davinci-resolve
     video-downloader
