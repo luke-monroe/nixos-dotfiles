@@ -14,14 +14,17 @@
     ];
   };
   home.packages = with pkgs; [
+    # browsers
     firefox
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser
     chromium
 
+    # dev tools
 		nodejs
     tailscale
     ollama
 
+    # media
     spotify
     librepods
     
@@ -31,9 +34,27 @@
     handbrake
     libreoffice
 
-    kdePackages.kate
+    # kde apps
     kdePackages.kclock
-    kdePackages.kdeconnect-kde
+    # these apps are already included with plasma
+    #kdePackages.kdeconnect-kde
+    #kdePackages.dolphin
+    #kdePackages.dolphin-plugins
+    #kdePackages.baloo-widgets
+    #kdePackages.kate
+    #kdePackages.kcalc
+    #kdePackages.ktexteditor
+    #kdePackages.konsole
+    #kdePackages.kwin-x11
+    #kdePackages.elisa
+    #kdePackages.gwenview
+    #kdePackages.okular
+    #kdePackages.ffmpegthumbs
+    #kdePackages.ark
+    #kdePackages.spectacle
+    #kdePackages.krdp
+    #kdePackages.partitionmanager
+    #kdePackages.system-monitor
   ];
 
   programs.bash = {
