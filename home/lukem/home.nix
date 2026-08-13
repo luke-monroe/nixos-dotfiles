@@ -35,8 +35,13 @@
     handbrake
     libreoffice
 
+    # utilities
+    incron
+    ffmpeg
+
     # kde apps
     kdePackages.kclock
+    kdePackages.isoimagewriter
     # these apps are already included with plasma
     #kdePackages.kdeconnect-kde
     #kdePackages.dolphin
