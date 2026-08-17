@@ -31,6 +31,8 @@
     
     davinci-resolve
     video-downloader
+    yt-dlp
+    yt-dlg
     vlc
     handbrake
     libreoffice
