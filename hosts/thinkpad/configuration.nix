@@ -49,6 +49,12 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  swapDevices = [{
+      device = "/var/lib/swapfile";
+      size = 64*1024; # 64 GiB
+    }];
+
+
   # ── Nix settings ──────────────────────────────────────────────────────
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
