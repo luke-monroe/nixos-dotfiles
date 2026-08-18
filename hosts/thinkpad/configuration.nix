@@ -50,9 +50,9 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   swapDevices = [{
-      device = "/var/lib/swapfile";
-      size = 64*1024; # 64 GiB
-    }];
+    device = "/var/lib/swapfile";
+    size = 64*1024; # 64 GiB
+  }];
 
 
   # ── Nix settings ──────────────────────────────────────────────────────
