@@ -45,7 +45,6 @@
     kdePackages.kclock
     kdePackages.isoimagewriter
     # these apps are already included with plasma
-    #kdePackages.kdeconnect-kde
     #kdePackages.dolphin
     #kdePackages.dolphin-plugins
     #kdePackages.baloo-widgets
