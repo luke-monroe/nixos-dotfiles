@@ -13,8 +13,8 @@
   networking.networkmanager.enable = true;
 
   # ── Locale & Time ─────────────────────────────────────────────────────
-  time.timeZone = "America/Chicago";
-  i18n.defaultLocale = "en_US.UTF-8";
+  # time.timeZone = "America/Chicago";
+  # i18n.defaultLocale = "en_US.UTF-8";
 
   # ── Hardware ──────────────────────────────────────────────────────────
   hardware.bluetooth.enable = true;
