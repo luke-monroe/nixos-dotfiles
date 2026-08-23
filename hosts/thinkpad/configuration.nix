@@ -141,6 +141,7 @@
     kdePackages.partitionmanager
     kdePackages.kcalc
     kdePackages.dolphin
+    pciutils
   ];
 
   programs.kdeconnect.enable = true;
