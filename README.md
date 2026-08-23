@@ -45,6 +45,19 @@ App versions are pinned in `flake.lock` so you must specifically update it with:
 nix flake update
 ```
 
+### Cleanup old NixOS versions and files
+
+Deletes all NixOS generations older than the 3 generations before to the current generation
+```bash
+sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +3
+sudo nix-env --delete-generations +3 # only affects current user
+```
+
+Delete unreachable store objects (uninstalled applications etc.)
+```bash
+nix-collect-garbage
+```
+
 ### Useful aliases
 
 I have set up some aliases in home.nix so instead of running the above commands you can just run nix-u to build and switch to the configuration or nix-a to update the flake, build, and switch to the configuration. 
