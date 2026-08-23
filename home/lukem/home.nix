@@ -102,11 +102,32 @@
     }
 
     gpu-status() {
-      [ -f ~/.config/plasma-workspace/env/kwin-gpu.sh ] \
-        && echo "Configured: NVIDIA primary" \
-        || echo "Configured: Intel primary (default)"
-      echo "Active this session:"
-      qdbus org.kde.KWin /KWin supportInformation | grep -A2 "OpenGL vendor"
+      echo "=== Configuration ==="
+
+      if [ -f ~/.config/plasma-workspace/env/kwin-gpu.sh ]; then
+        echo "KWin DRM: NVIDIA primary"
+        cat ~/.config/plasma-workspace/env/kwin-gpu.sh
+      else
+        echo "KWin DRM: default"
+      fi
+
+      echo
+      echo "=== DRM devices ==="
+      for c in /dev/dri/card*; do
+        echo "$c"
+        echo "  vendor: $(cat /sys/class/drm/$(basename "$c")/device/vendor 2>/dev/null)"
+        echo "  device: $(cat /sys/class/drm/$(basename "$c")/device/device 2>/dev/null)"
+      done
+
+      echo
+      echo "=== KWin ==="
+      qdbus org.kde.KWin /KWin supportInformation |
+        grep -E "OpenGL vendor|OpenGL renderer|OpenGL version|Driver|Xwayland|Compositing"
+
+      echo
+      echo "=== NVIDIA ==="
+      nvidia-smi --query-gpu=name,driver_version,pstate,temperature.gpu,memory.used \
+        --format=csv,noheader
     }
   '';
 }
