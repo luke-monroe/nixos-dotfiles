@@ -23,6 +23,7 @@
 		nodejs
     tailscale
     ollama
+    distrobox
 
     # media
     spotify
