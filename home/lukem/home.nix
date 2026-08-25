@@ -23,6 +23,7 @@
 		nodejs
     tailscale
     ollama
+    podman
     distrobox
 
     # media

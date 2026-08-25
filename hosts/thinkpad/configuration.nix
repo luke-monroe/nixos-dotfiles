@@ -96,6 +96,13 @@
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 
+  # ── Virtualisation ───────────────────────────────────────────────────
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true; # Creates a symlink from docker to podman
+    defaultNetwork.settings.dns_enabled = true; 
+  };
+
   # ── Security ──────────────────────────────────────────────────────────
     security.polkit.enable = true;
   security.polkit.extraConfig = ''
