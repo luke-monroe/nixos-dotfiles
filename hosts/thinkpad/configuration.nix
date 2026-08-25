@@ -92,7 +92,7 @@
   services.upower.enable = true;
   services.tuned.enable = true;
   services.fwupd.enable = true;
-  
+  services.netbird.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 
