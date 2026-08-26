@@ -15,7 +15,7 @@
   };
   programs.ghostty = {
     enable = true;
-    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+    package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
 
     enableBashIntegration = true;
 
@@ -96,53 +96,4 @@
 
 		'';
 	};
-  programs.bash.bashrcExtra = ''
-    dgpu() {
-      local nv intel
-      for c in /dev/dri/card*; do
-        case "$(cat /sys/class/drm/$(basename "$c")/device/vendor 2>/dev/null)" in
-          0x10de) nv=$c ;;
-          0x8086) intel=$c ;;
-        esac
-      done
-      mkdir -p ~/.config/plasma-workspace/env
-      echo "export KWIN_DRM_DEVICES=\"$nv:$intel\"" > ~/.config/plasma-workspace/env/kwin-gpu.sh
-      chmod +x ~/.config/plasma-workspace/env/kwin-gpu.sh
-      echo "NVIDIA set primary ($nv). Log out/in to apply."
-    }
-
-    igpu() {
-      rm -f ~/.config/plasma-workspace/env/kwin-gpu.sh
-      echo "Intel set primary (default). Log out/in to apply."
-    }
-
-    gpu-status() {
-      echo "=== Configuration ==="
-
-      if [ -f ~/.config/plasma-workspace/env/kwin-gpu.sh ]; then
-        echo "KWin DRM: NVIDIA primary"
-        cat ~/.config/plasma-workspace/env/kwin-gpu.sh
-      else
-        echo "KWin DRM: default"
-      fi
-
-      echo
-      echo "=== DRM devices ==="
-      for c in /dev/dri/card*; do
-        echo "$c"
-        echo "  vendor: $(cat /sys/class/drm/$(basename "$c")/device/vendor 2>/dev/null)"
-        echo "  device: $(cat /sys/class/drm/$(basename "$c")/device/device 2>/dev/null)"
-      done
-
-      echo
-      echo "=== KWin ==="
-      qdbus org.kde.KWin /KWin supportInformation |
-        grep -E "OpenGL vendor|OpenGL renderer|OpenGL version|Driver|Xwayland|Compositing"
-
-      echo
-      echo "=== NVIDIA ==="
-      nvidia-smi --query-gpu=name,driver_version,pstate,temperature.gpu,memory.used \
-        --format=csv,noheader
-    }
-  '';
 }

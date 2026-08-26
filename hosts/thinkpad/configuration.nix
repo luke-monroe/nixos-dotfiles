@@ -22,10 +22,7 @@
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [   
-    "modesetting"
-    "nvidia" 
-  ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -33,7 +30,7 @@
       enable = true;
       finegrained = true;
     };
-    open = false;
+    open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   
@@ -49,8 +46,10 @@
 
 
   environment.sessionVariables = {
-  NIXOS_OZONE_WL = "1";
-  LIBVA_DRIVER_NAME = "iHD";
+    NIXOS_OZONE_WL = "1";
+    LIBVA_DRIVER_NAME = "iHD";
+    # Force Intel as primary renderer, NVIDIA as secondary output using stable paths
+    KWIN_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
   };
 
   swapDevices = [{
