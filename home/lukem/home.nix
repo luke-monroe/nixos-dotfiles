@@ -13,6 +13,18 @@
       continue.continue
     ];
   };
+  programs.ghostty = {
+    enable = true;
+    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+
+    enableBashIntegration = true;
+
+    # settings = {
+    #   theme = "Abernathy";
+    #   background-opacity = "0.95";
+    # };
+  };
+
   home.packages = with pkgs; [
     # browsers
     firefox
@@ -38,6 +50,7 @@
     vlc
     handbrake
     libreoffice
+    onlyoffice-desktopeditors
 
     # utilities
     incron
