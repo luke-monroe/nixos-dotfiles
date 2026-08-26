@@ -55,7 +55,6 @@
     # utilities
     incron
     ffmpeg
-    netbird-ui
 
     # kde apps
     kdePackages.kclock

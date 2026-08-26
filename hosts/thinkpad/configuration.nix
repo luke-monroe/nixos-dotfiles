@@ -11,6 +11,8 @@
   # ── Networking ────────────────────────────────────────────────────────
   networking.hostName = "lukes-nixos";
   networking.networkmanager.enable = true;
+  services.netbird.enable = true;
+  services.resolved.enable = true;
 
   # ── Locale & Time ─────────────────────────────────────────────────────
   # time.timeZone = "America/Chicago";
@@ -94,7 +96,6 @@
   services.upower.enable = true;
   services.tuned.enable = true;
   services.fwupd.enable = true;
-  services.netbird.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 
