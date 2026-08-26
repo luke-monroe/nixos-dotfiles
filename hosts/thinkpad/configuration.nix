@@ -19,6 +19,11 @@
   # ── Hardware ──────────────────────────────────────────────────────────
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [   
+    "modesetting"
+    "nvidia" 
+  ];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -45,9 +50,6 @@
   NIXOS_OZONE_WL = "1";
   LIBVA_DRIVER_NAME = "iHD";
   };
-
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   swapDevices = [{
     device = "/var/lib/swapfile";
