@@ -142,7 +142,6 @@
     vim
     git
     wget
-    kitty
     gnome-keyring
     ffmpegthumbnailer
     playerctl
@@ -151,6 +150,7 @@
     kdePackages.kcalc
     kdePackages.dolphin
     pciutils
+    exfatprogs
   ];
 
   programs.kdeconnect.enable = true;
