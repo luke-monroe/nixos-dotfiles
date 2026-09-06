@@ -18,45 +18,75 @@
   # time.timeZone = "America/Chicago";
   # i18n.defaultLocale = "en_US.UTF-8";
 
-  # ── Hardware ──────────────────────────────────────────────────────────
+  # ── Hardware & Graphics ───────────────────────────────────────────────
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
+    open = false; 
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
     powerManagement = {
       enable = true;
       finegrained = true;
     };
-    open = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  
-		prime = {
+
+    prime = {
       offload = {
         enable = true;
         enableOffloadCmd = true;
       };
-      intelBusId = "PCI:0:2:0"; 
+      intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="drm", KERNEL=="card*", DRIVERS=="i915", SYMLINK+="dri/igpu"
+    SUBSYSTEM=="drm", KERNEL=="card*", DRIVERS=="nvidia", SYMLINK+="dri/dgpu"
+  '';
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     LIBVA_DRIVER_NAME = "iHD";
-    # Force Intel as primary renderer, NVIDIA as secondary output using stable paths
-    KWIN_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
+    KWIN_DRM_DEVICES = "/dev/dri/igpu:/dev/dri/dgpu";
   };
 
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 64*1024; # 64 GiB
+    size = 64 * 1024; # 64 GiB
   }];
 
+  # ── Power Management (TLP) ────────────────────────────────────────────
+  services.tuned.enable = false;
+  services.power-profiles-daemon.enable = false;
+
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      PCIE_ASPM_ON_AC = "default";
+      PCIE_ASPM_ON_BAT = "powersupersave";
+
+      RUNTIME_PM_ON_AC = "auto";
+      RUNTIME_PM_ON_BAT = "auto";
+
+      # Audio codec power saving
+      SOUND_POWER_SAVE_ON_AC = 0;
+      SOUND_POWER_SAVE_ON_BAT = 1;
+
+      START_CHARGE_THRESH_BAT0 = 90;
+      STOP_CHARGE_THRESH_BAT0 = 95;
+    };
+  };
 
   # ── Nix settings ──────────────────────────────────────────────────────
   nixpkgs.config.allowUnfree = true;
@@ -93,7 +123,6 @@
   services.dbus.enable = true;
   security.pam.services.sddm.enableKwallet = true;
   services.upower.enable = true;
-  services.tuned.enable = true;
   services.fwupd.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
