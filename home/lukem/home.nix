@@ -42,6 +42,7 @@
     onlyoffice-desktopeditors
 
     # utilities
+    dropbox
     incron
     ffmpeg
 
