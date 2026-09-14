@@ -47,6 +47,8 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="drm", KERNEL=="card*", DRIVERS=="i915", SYMLINK+="dri/igpu"
     SUBSYSTEM=="drm", KERNEL=="card*", DRIVERS=="nvidia", SYMLINK+="dri/dgpu"
+    # STMicroelectronics ST-LINK/V2.1
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"
   '';
 
   environment.sessionVariables = {
@@ -182,6 +184,8 @@
     pciutils
     exfatprogs
   ];
+
+  services.udev.packages = [ pkgs.stlink ];
 
   programs.kdeconnect.enable = true;
   
