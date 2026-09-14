@@ -21,7 +21,7 @@
   # ── Hardware & Graphics ───────────────────────────────────────────────
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
