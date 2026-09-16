@@ -1,6 +1,13 @@
 #home.nix
 { config, pkgs, inputs, lib, ... }:
 
+let
+  pkgs-davinci = import inputs.nixpkgs-davinci {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
+
 {
   home.username = "lukem";
   home.homeDirectory = "/home/lukem";
@@ -32,7 +39,7 @@
     librepods
     discord
     
-    davinci-resolve
+    pkgs-davinci.davinci-resolve
     video-downloader
     yt-dlp
     yt-dlg

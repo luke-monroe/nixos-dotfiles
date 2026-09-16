@@ -13,6 +13,8 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-davinci.url = "github:NixOS/nixpkgs/c043004d1c6985732bcc1cbc5a9c9aecbbb4e0f0";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
