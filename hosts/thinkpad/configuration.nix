@@ -136,6 +136,7 @@
     dockerCompat = true; # Creates a symlink from docker to podman
     defaultNetwork.settings.dns_enabled = true; 
   };
+  virtualisation.containers.registries.search = [ "docker.io" "quay.io" ];
 
   # ── Security ──────────────────────────────────────────────────────────
     security.polkit.enable = true;
