@@ -33,6 +33,9 @@ in
     ollama
     podman
     distrobox
+    antigravity
+    cursor-cli
+    code-cursor
 
     # media
     spotify
