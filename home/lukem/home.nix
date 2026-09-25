@@ -33,7 +33,7 @@ in
     ollama
     podman
     distrobox
-    antigravity
+    antigravity-ide
     cursor-cli
     code-cursor
 
