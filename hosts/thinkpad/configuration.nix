@@ -27,7 +27,7 @@
     modesetting.enable = true;
     open = false; 
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
 
     powerManagement = {
       enable = true;
@@ -53,8 +53,24 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    LIBVA_DRIVER_NAME = "iHD";
-    KWIN_DRM_DEVICES = "/dev/dri/igpu:/dev/dri/dgpu";
+    KWIN_DRM_NO_DIRECT_SCANOUT = "1";
+  };
+
+  # ── Boot Profiles (Specialisations) ───────────────────────────────────
+  specialisation = {
+    igpu.configuration = {
+      environment.sessionVariables = {
+        KWIN_DRM_DEVICES = "/dev/dri/igpu";
+        KWIN_DRM_NO_DIRECT_SCANOUT = lib.mkForce "0";
+      };
+    };
+
+    nvidia.configuration = {
+      environment.sessionVariables = {
+        KWIN_DRM_DEVICES = "/dev/dri/dgpu:/dev/dri/igpu";
+        KWIN_DRM_NO_DIRECT_SCANOUT = lib.mkForce "0";
+      };
+    };
   };
 
   swapDevices = [{
