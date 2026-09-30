@@ -29,7 +29,6 @@ in
 
     # dev tools
 		nodejs
-    tailscale
     ollama
     podman
     distrobox
