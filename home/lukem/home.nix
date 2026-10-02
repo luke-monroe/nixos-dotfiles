@@ -95,4 +95,34 @@ in
 
 		'';
 	};
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      btw = "echo i use nixos, btw";
+      nix-a = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
+      nix-u = "nix flake update \n
+               sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
+    };
+
+    history.size = 10000;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
+
+    initContent = ''
+      # echo git config on start
+      [[ $- == *i* ]] && {
+        echo "Git profile:"
+        git config user.email
+      }
+    '';
+  };
 }

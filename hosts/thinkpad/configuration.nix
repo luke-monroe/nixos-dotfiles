@@ -198,6 +198,7 @@
     isNormalUser = true;
     description = "lukem";
     extraGroups = [ "networkmanager" "wheel" "storage" "video" "audio" ];
+    shell = pkgs.zsh;
   };
 
   # ── System packages ────────────────────────────────────────────────────
@@ -223,6 +224,7 @@
   services.udev.packages = [ pkgs.stlink ];
 
   programs.kdeconnect.enable = true;
+  programs.zsh.enable = true;
   
   system.stateVersion = "25.05";
 }
