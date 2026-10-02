@@ -9,6 +9,7 @@
 !LICENSE
 !flake.nix
 !flake.lock
+!AGENTS.md
 
 # Allow configuration
 !hosts/**
