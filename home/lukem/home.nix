@@ -54,6 +54,7 @@ in
     dropbox
     incron
     ffmpeg
+    calibre
 
     # kde apps
     kdePackages.kclock
@@ -78,14 +79,16 @@ in
     #kdePackages.system-monitor
   ];
 
+  home.shellAliases = {
+    btw = "echo i use nixos, btw";
+    nix-a = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
+    nix-u = "nix flake update \n
+             sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
+    distro = "exec distrobox enter";
+  };
+
   programs.bash = {
     enable = true;
-    shellAliases = {
-      btw = "echo i use nixos, btw";
-      nix-a = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
-      nix-u = "nix flake update \n
-               sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
-    };
 		initExtra = ''
 		  # echo git config on start
 			[[ $- == *i* ]] && {
@@ -101,13 +104,6 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      btw = "echo i use nixos, btw";
-      nix-a = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
-      nix-u = "nix flake update \n
-               sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
-    };
 
     history.size = 10000;
 

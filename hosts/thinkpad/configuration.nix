@@ -218,6 +218,7 @@
     kdePackages.kcalc
     kdePackages.dolphin
     pciutils
+    poppler-utils
     exfatprogs
   ];
 
