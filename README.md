@@ -37,6 +37,7 @@ sudo nixos-rebuild build --flake .#thinkpad
 ```bash
 sudo nixos-rebuild switch --flake .#thinkpad
 ```
+
 ### Update flake
 
 App versions are pinned in `flake.lock` so you must specifically update it with:
@@ -48,20 +49,21 @@ nix flake update
 ### Cleanup old NixOS versions and files
 
 Deletes all NixOS generations older than the 3 generations before to the current generation
+
 ```bash
 sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +3
 sudo nix-env --delete-generations +3 # only affects current user
 ```
 
 Delete unreachable store objects (uninstalled applications etc.)
+
 ```bash
 nix-collect-garbage
 ```
 
 ### Useful aliases
 
-I have set up some aliases in home.nix so instead of running the above commands you can just run nix-u to build and switch to the configuration or nix-a to update the flake, build, and switch to the configuration. 
-
+I have set up some aliases in home.nix so instead of running the above commands you can just run nix-u to build and switch to the configuration or nix-a to update the flake, build, and switch to the configuration.
 
 ## Setting Up on a New Machine
 
@@ -73,14 +75,14 @@ I have set up some aliases in home.nix so instead of running the above commands 
 sudo cp /etc/nixos/hardware-configuration.nix hosts/thinkpad/
 ```
 
-4. Review any machine-specific settings, such as:
+1. Review any machine-specific settings, such as:
 
 * NVIDIA PRIME PCI bus IDs
 * hostname
 * timezone
 * storage configuration
 
-5. Build and activate the system.
+1. Build and activate the system.
 
 ```bash
 sudo nixos-rebuild switch --flake .#thinkpad
