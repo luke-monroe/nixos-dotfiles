@@ -55,6 +55,8 @@ in
     incron
     ffmpeg
     calibre
+    usbutils
+    grsync
 
     # kde apps
     kdePackages.kclock
