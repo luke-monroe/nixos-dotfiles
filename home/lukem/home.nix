@@ -87,6 +87,8 @@ in
     nix-u = "nix flake update \n
              sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
     distro = "exec distrobox enter";
+    charge-full = "sudo tlp fullcharge BAT0";
+    charge-reset = "sudo tlp setcharge";
   };
 
   programs.bash = {
