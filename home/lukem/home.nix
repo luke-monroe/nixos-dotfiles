@@ -49,6 +49,7 @@ in
     handbrake
     libreoffice
     onlyoffice-desktopeditors
+    remmina
 
     # utilities
     dropbox
