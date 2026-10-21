@@ -17,8 +17,6 @@ Before making any changes or suggestions, always consider this specific hardware
 - **External ports:** (HDMI, Thunderbolt, USB-C) are hardwired *directly* to the NVIDIA dGPU. No external output can ever go through the iGPU on this model.
 - **Max Displays:** Up to 5 total displays (1 internal + 4 external via HDMI/USB-C/2x TB).
 
-*Note: I back up this configuration with GitHub, so I may maintain different branches for different display setups.*
-
 ## AI Agent Directives
 
 1. **Context First:** Always verify my current display environment and settings before suggesting changes. Do not assume my setup is identical to a standard configuration.

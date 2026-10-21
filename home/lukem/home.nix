@@ -40,6 +40,10 @@ in
     spotify
     librepods
     discord
+
+    libreoffice
+    onlyoffice-desktopeditors
+    obsidian
     
     pkgs-davinci.davinci-resolve
     video-downloader
@@ -47,8 +51,6 @@ in
     yt-dlg
     vlc
     handbrake
-    libreoffice
-    onlyoffice-desktopeditors
     remmina
 
     # utilities
