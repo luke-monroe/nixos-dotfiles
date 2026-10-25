@@ -9,6 +9,11 @@ let
 in
 
 {
+  imports = [
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+    ./plasma.nix
+  ];
+
   home.username = "lukem";
   home.homeDirectory = "/home/lukem";
   home.stateVersion = "25.05";
