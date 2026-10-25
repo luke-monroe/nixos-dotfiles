@@ -63,8 +63,6 @@
       # Window Behavior & Focus
       "kwinrc"."Windows" = {
         "FocusPolicy" = "FocusFollowsMouse";
-        "ElectricBorders" = 1;
-        "ElectricBorderDelay" = 10;
       };
 
       # Window Decorations & Titlebar buttons
@@ -83,40 +81,14 @@
         "wobblywindowsEnabled" = true;
         "minimizeallEnabled" = true;
         "mousetilerEnabled" = true;
-        "dialogparentEnabled" = false;
       };
       "kwinrc"."Effect-blur"."BlurStrength" = 10;
-      "kwinrc"."Effect-overview"."BorderActivate" = 9;
-      "kwinrc"."Effect-slide"."HorizontalGap" = 5;
       "kwinrc"."Effect-wobblywindows" = {
         "AdvancedMode" = true;
         "Drag" = 69;
         "MoveFactor" = 22;
         "ResizeWobble" = false;
         "Stiffness" = 13;
-      };
-      "kwinrc"."TabBox" = {
-        "LayoutName" = "thumbnail_grid";
-        "HighlightWindows" = false;
-      };
-      "kwinrc"."Script-mousetiler" = {
-        "showHintHint" = false;
-        "tilerVisibility" = 2;
-      };
-
-      # KRunner: floating
-      "krunnerrc"."General"."FreeFloating" = true;
-
-      # Session Management
-      "ksmserverrc"."General" = {
-        "confirmLogout" = false;
-        "loginMode" = "emptySession";
-      };
-
-      # Screen Locker Grace period & timeout
-      "kscreenlockerrc"."Daemon" = {
-        "LockGrace" = 30;
-        "Timeout" = 15;
       };
 
       # Window Rules
