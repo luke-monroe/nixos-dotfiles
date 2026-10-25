@@ -5,6 +5,13 @@
     enable = true;
     overrideConfig = true;
 
+    # ── Workspace & Theme ───────────────────────────────────────────────
+    workspace = {
+      # Light mode with dark taskbar
+      theme = "breeze-dark";
+      colorScheme = "BreezeLight";
+    };
+
     # ── Shortcuts & Keybindings ─────────────────────────────────────────
     shortcuts = {
       # KWin window management
@@ -12,8 +19,7 @@
         "Walk Through Windows" = "Alt+Tab";
         "Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
         "Overview" = [ "Meta+Tab" ];
-
-        # Mouse Tiler script bindings
+        "MinimizeAll" = "Meta+`";
       };
 
       # Media Playback
