@@ -2,7 +2,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  pkgs-davinci = import inputs.nixpkgs-davinci {
+  pkgs-stable = import inputs.nixpkgs-stable {
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
@@ -10,7 +10,7 @@ in
 
 {
   imports = [
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+    inputs.plasma-manager.homeModules.plasma-manager
     ./plasma.nix
   ];
 
@@ -50,12 +50,12 @@ in
     onlyoffice-desktopeditors
     obsidian
     
-    pkgs-davinci.davinci-resolve
+    davinci-resolve
     video-downloader
     yt-dlp
     yt-dlg
     vlc
-    handbrake
+    pkgs-stable.handbrake
     remmina
 
     # utilities
