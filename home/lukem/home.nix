@@ -2,7 +2,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  pkgs-stable = import inputs.nixpkgs-stable {
+  pkgs-unstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
@@ -17,6 +17,13 @@ in
   home.username = "lukem";
   home.homeDirectory = "/home/lukem";
   home.stateVersion = "25.05";
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    configPackages = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    config.common.default = [ "kde" ];
+  };
 
 	programs.vscode = {
     enable = true;
@@ -37,7 +44,7 @@ in
     ollama
     podman
     distrobox
-    antigravity-ide
+    pkgs-unstable.antigravity-ide
     cursor-cli
     code-cursor
 
@@ -55,7 +62,7 @@ in
     yt-dlp
     yt-dlg
     vlc
-    pkgs-stable.handbrake
+    handbrake
     remmina
 
     # utilities

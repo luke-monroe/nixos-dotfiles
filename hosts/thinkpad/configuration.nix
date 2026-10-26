@@ -52,39 +52,30 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"
   '';
 
+  # ── Session Variables (Default: Docked / 4K Workstation) ──────────────
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    KWIN_DRM_DEVICES = "/dev/dri/igpu:/dev/dri/dgpu";
     KWIN_DRM_NO_DIRECT_SCANOUT = "1";
   };
 
   # ── Boot Profiles (Specialisations) ───────────────────────────────────
+  # "igpu" specialisation puts the NVIDIA dGPU to sleep for maximum battery life.
   specialisation = {
     igpu.configuration = {
-      boot.extraModprobeConfig = ''
-        blacklist nouveau
-        options nouveau modeset=0
-      '';
-      boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" "nvidia_uvm" ];
-      services.xserver.videoDrivers = lib.mkForce [ ];
 
       environment.sessionVariables = {
-        KWIN_DRM_DEVICES = "/dev/dri/igpu";
+        KWIN_DRM_DEVICES = lib.mkForce "/dev/dri/igpu";
+
+        __GLX_VENDOR_LIBRARY_NAME = lib.mkForce "mesa";
+        __EGL_VENDOR_LIBRARY_FILENAMES = lib.mkForce "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
+        VK_DRIVER_FILES = lib.mkForce "/run/opengl-driver/share/vulkan/icd.d/intel_icd.x86_64.json";
       };
 
-      services.udev.extraRules = lib.mkAfter ''
-        # Remove NVIDIA VGA/3D controller devices
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
-        # Remove NVIDIA Audio devices
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
-        # Remove NVIDIA USB xHCI Host Controller
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
-      '';
-    };
-
-    nvidia.configuration = {
-      environment.sessionVariables = {
-        KWIN_DRM_DEVICES = "/dev/dri/dgpu:/dev/dri/igpu";
-        KWIN_DRM_NO_DIRECT_SCANOUT = lib.mkForce "0";
+      # Enforce power-saving CPU profile on battery for maximum mobile endurance
+      services.tlp.settings = {
+        CPU_ENERGY_PERF_POLICY_ON_BAT = lib.mkForce "power";
+        PLATFORM_PROFILE_ON_BAT = lib.mkForce "low-power";
       };
     };
   };
@@ -145,6 +136,8 @@
         pkgs.kdePackages.xdg-desktop-portal-kde
         pkgs.xdg-desktop-portal-gtk
       ];
+      configPackages = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+      config.common.default = [ "kde" ];
     };
 
   # ── Audio ─────────────────────────────────────────────────────────────
@@ -168,9 +161,7 @@
     dockerCompat = true; # Creates a symlink from docker to podman
     defaultNetwork.settings.dns_enabled = true; 
   };
-  virtualisation.containers.registries.settings = {
-    registries.search = [ "docker.io" "quay.io" ];
-  };
+  virtualisation.containers.registries.search = [ "docker.io" "quay.io" ];
 
   # ── Security ──────────────────────────────────────────────────────────
     security.polkit.enable = true;
