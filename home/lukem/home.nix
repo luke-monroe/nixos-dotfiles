@@ -50,7 +50,7 @@ in
 
     # media
     spotify
-    librepods
+    #librepods
     discord
 
     libreoffice
