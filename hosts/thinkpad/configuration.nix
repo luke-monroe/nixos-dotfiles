@@ -15,10 +15,6 @@
   services.tailscale.enable = true;
   services.resolved.enable = true;
 
-  # ── Locale & Time ─────────────────────────────────────────────────────
-  # time.timeZone = "America/Chicago";
-  # i18n.defaultLocale = "en_US.UTF-8";
-
   # ── Hardware & Graphics ───────────────────────────────────────────────
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
