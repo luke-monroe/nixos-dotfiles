@@ -55,7 +55,7 @@ in
 
     libreoffice
     onlyoffice-desktopeditors
-    obsidian
+    pkgs-unstable.obsidian
     
     davinci-resolve
     video-downloader
