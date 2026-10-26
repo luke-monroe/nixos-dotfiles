@@ -100,23 +100,12 @@
       };
 
       # Window Rules
-      "kwinrulesrc"."eb4780c6-017b-4905-b87e-fffc931bfff8" = {
-        "Description" = "Dark Bar for Spotify";
-        "decocolor" = "BreezeDark";
-        "decocolorrule" = 2;
-        "wmclass" = "spotify";
-        "wmclasscomplete" = true;
-        "wmclassmatch" = 2;
-      };
-      "kwinrulesrc"."eb088a0e-d50e-4dcd-93d8-1d36e1255e0e" = {
-        "Description" = "Zen Browser on all Desktops";
-        "activity" = "00000000-0000-0000-0000-000000000000";
-        "activityrule" = 3;
-        "desktops" = "\\0";
-        "desktopsrule" = 3;
-        "wmclass" = "zen";
-        "wmclassmatch" = 1;
-      };
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".Description = "Window settings for zen";
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".desktops = "\\0";
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".desktopsrule = 2;
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".types = 1;
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".wmclass = "zen";
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".wmclassmatch = 1;
     };
   };
 }
