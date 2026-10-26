@@ -3,7 +3,6 @@
 {
   programs.plasma = {
     enable = true;
-    overrideConfig = true;
 
     # ── Workspace & Theme ───────────────────────────────────────────────
     workspace = {
@@ -11,6 +10,9 @@
       theme = "breeze-dark";
       colorScheme = "BreezeLight";
     };
+
+    # ── Input Devices ───────────────────────────────────────────────────
+    input.keyboard.numlockOnStartup = "on";
 
     # ── Shortcuts & Keybindings ─────────────────────────────────────────
     shortcuts = {
