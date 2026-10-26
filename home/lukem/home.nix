@@ -18,13 +18,6 @@ in
   home.homeDirectory = "/home/lukem";
   home.stateVersion = "25.05";
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    configPackages = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-    config.common.default = [ "kde" ];
-  };
-
 	programs.vscode = {
     enable = true;
     package = pkgs.vscode;
@@ -41,8 +34,6 @@ in
 
     # dev tools
 		nodejs
-    ollama
-    podman
     distrobox
     pkgs-unstable.antigravity-ide
     cursor-cli
@@ -99,8 +90,7 @@ in
   home.shellAliases = {
     btw = "echo i use nixos, btw";
     nix-a = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
-    nix-u = "nix flake update \n
-             sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
+    nix-u = "nix flake update --flake ~/nixos-dotfiles && sudo nixos-rebuild switch --flake ~/nixos-dotfiles#thinkpad";
     distro = "exec distrobox enter";
     charge-full = "sudo tlp fullcharge BAT0";
     charge-reset = "sudo tlp setcharge";
