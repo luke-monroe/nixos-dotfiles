@@ -47,6 +47,7 @@ in
     libreoffice
     onlyoffice-desktopeditors
     pkgs-unstable.obsidian
+    safeeyes
     
     davinci-resolve
     video-downloader
