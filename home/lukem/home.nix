@@ -34,9 +34,11 @@ in
 
     # dev tools
     distrobox
+    pkgs-unstable.antigravity-cli
     pkgs-unstable.antigravity-ide
-    cursor-cli
-    code-cursor
+    pkgs-unstable.antigravity-hub
+    pkgs-unstable.cursor-cli
+    pkgs-unstable.code-cursor
 
     # media
     spotify
