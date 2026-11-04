@@ -51,6 +51,21 @@
 
     # ── Custom Config Files (rc / ini) ──────────────────────────────────
     configFile = {
+      # KRunner Settings
+      "krunnerrc" = {
+        
+        "Plugins" = {
+          "browserhistoryEnabled" = false;
+          "browsertabsEnabled" = false;
+          "krunner_appstreamEnabled" = false;
+          "krunner_bookmarksrunnerEnabled" = false;
+          "krunner_sessionsEnabled" = false;
+        };
+        "Plugins/Favorites" = {
+          "plugins" = "krunner_sessions,krunner_powerdevil,krunner_services,krunner_systemsettings,calculator,krunner_shell,org.kde.datetime";
+        };
+      };
+
       # Keyboard: Swap Caps Lock and Escape
       "kxkbrc"."Layout"."Options" = "caps:swapescape";
       "kxkbrc"."Layout"."ResetOldOptions" = true;
