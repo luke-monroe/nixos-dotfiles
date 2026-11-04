@@ -207,10 +207,20 @@
     exfatprogs
   ];
 
-  services.udev.packages = [ pkgs.stlink ];
 
   programs.kdeconnect.enable = true;
   programs.zsh.enable = true;
+
+  # ── nix-ld (Run unpatched dynamic binaries for VS Code extensions, etc.) ─
+  # programs.nix-ld.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   stdenv.cc.cc.lib
+  #   zlib
+  #   openssl
+  #   icu
+  #   glib
+  #   curl
+  # ];
   
   system.stateVersion = "25.05";
 }

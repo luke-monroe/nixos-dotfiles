@@ -18,12 +18,17 @@ in
   home.homeDirectory = "/home/lukem";
   home.stateVersion = "25.05";
 
-	programs.vscode = {
+  programs.vscode = {
     enable = true;
     package = pkgs.vscode;
     profiles.default.extensions = with pkgs.vscode-extensions; [
-      continue.continue
+      # continue.continue
+      # Note: google-antigravity is installed directly via VS Code marketplace
+      davidanson.vscode-markdownlint
+      arcticicestudio.nord-visual-studio-code
+      mkhl.direnv
     ];
+    profiles.default.userSettings = {};
   };
 
   home.packages = with pkgs; [
@@ -37,9 +42,7 @@ in
     pkgs-unstable.antigravity-cli
     pkgs-unstable.antigravity-ide
     pkgs-unstable.antigravity-hub
-    pkgs-unstable.cursor-cli
-    pkgs-unstable.code-cursor
-
+    
     # media
     spotify
     #librepods
