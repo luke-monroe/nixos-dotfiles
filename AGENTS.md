@@ -13,6 +13,7 @@ Before making any changes or suggestions, always consider this specific hardware
   - **Graphics:** Hybrid (Intel iGPU UHD 630 + NVIDIA Quadro RTX 3000, muxless Optimus/PRIME)
 
 ### Hardware Wiring Constraints (CRITICAL)
+
 - **Internal display:** Wired to iGPU (standard Optimus).
 - **External ports:** (HDMI, Thunderbolt, USB-C) are hardwired *directly* to the NVIDIA dGPU. No external output can ever go through the iGPU on this model.
 - **Max Displays:** Up to 5 total displays (1 internal + 4 external via HDMI/USB-C/2x TB).
@@ -26,6 +27,7 @@ Before making any changes or suggestions, always consider this specific hardware
 ## Reference Materials
 
 Use the following official documentation for best practices and up-to-date syntax:
+
 - [NixOS Tutorials](https://nix.dev/tutorials/nixos/index.html)
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - Refer to local or online NixOS Manual files for specific configuration options.
