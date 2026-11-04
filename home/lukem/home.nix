@@ -33,7 +33,6 @@ in
     chromium
 
     # dev tools
-		nodejs
     distrobox
     pkgs-unstable.antigravity-ide
     cursor-cli
