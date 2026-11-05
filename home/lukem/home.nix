@@ -52,6 +52,7 @@ in
     onlyoffice-desktopeditors
     pkgs-unstable.obsidian
     safeeyes
+    moonlight-qt
     
     davinci-resolve
     video-downloader
