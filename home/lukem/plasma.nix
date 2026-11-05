@@ -62,7 +62,7 @@
           "krunner_sessionsEnabled" = false;
         };
         "Plugins/Favorites" = {
-          "plugins" = "krunner_sessions,krunner_powerdevil,krunner_services,krunner_systemsettings,calculator,krunner_shell,org.kde.datetime";
+          "plugins" = "krunner_shell,calculator,org.kde.datetime,krunner_powerdevil,krunner_services,krunner_systemsettings";
         };
       };
 
@@ -121,6 +121,12 @@
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".types = 1;
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".wmclass = "zen";
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".wmclassmatch = 1;
+
+      kwinrulesrc."12502159-752d-4e96-b51b-31bc40f84b0d".Description = "Darkbar for Spotify";
+      kwinrulesrc."12502159-752d-4e96-b51b-31bc40f84b0d".decocolor = "BreezeDark";
+      kwinrulesrc."12502159-752d-4e96-b51b-31bc40f84b0d".decocolorrule = 2;
+      kwinrulesrc."12502159-752d-4e96-b51b-31bc40f84b0d".wmclass = "spotify";
+      kwinrulesrc."12502159-752d-4e96-b51b-31bc40f84b0d".wmclassmatch = 1;
     };
   };
 }
