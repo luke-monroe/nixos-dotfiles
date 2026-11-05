@@ -14,6 +14,113 @@
     # ── Input Devices ───────────────────────────────────────────────────
     input.keyboard.numlockOnStartup = "on";
 
+    # ── Panels & Taskbar ────────────────────────────────────────────────
+    panels = [
+      {
+        screen = 0;
+        location = "bottom";
+        height = 32;
+        floating = true;
+        widgets = [
+          # 1. Application Launcher
+          {
+            kickoff = {
+              icon = "/home/lukem/Pictures/System/menu1.svg";
+            };
+          }
+
+          # 2. Total CPU Use
+          {
+            name = "org.kde.plasma.systemmonitor.cpu";
+            config = {
+              Appearance = {
+                chartFace = "org.kde.ksysguard.piechart";
+                title = "Total CPU Use";
+              };
+              Sensors = {
+                highPrioritySensorIds = [ "cpu/all/usage" ];
+                lowPrioritySensorIds = [ "cpu/all/cpuCount" "cpu/all/coreCount" ];
+                totalSensors = [ "cpu/all/averageTemperature" ];
+              };
+            };
+          }
+
+          # 3. GPU 1 Monitor
+          {
+            name = "org.kde.plasma.systemmonitor";
+            config = {
+              Appearance.chartFace = "org.kde.ksysguard.piechart";
+              Sensors.highPrioritySensorIds = [ "gpu/gpu1/usage" ];
+            };
+          }
+
+          # 4. GPU 0 Monitor
+          {
+            name = "org.kde.plasma.systemmonitor";
+            config = {
+              Appearance.chartFace = "org.kde.ksysguard.piechart";
+              Sensors = {
+                highPrioritySensorIds = [ "gpu/gpu0/usage" ];
+                totalSensors = [ "gpu/gpu0/power" ];
+              };
+            };
+          }
+
+          # 5. Memory Monitor
+          {
+            name = "org.kde.plasma.systemmonitor.memory";
+            config = {
+              Appearance = {
+                chartFace = "org.kde.ksysguard.piechart";
+                title = "Memory Usage";
+              };
+              Sensors = {
+                highPrioritySensorIds = [ "memory/physical/used" ];
+                lowPrioritySensorIds = [ "memory/physical/total" ];
+                totalSensors = [ "memory/physical/used" ];
+              };
+            };
+          }
+
+          # 6. Pager (Virtual Desktops)
+          {
+            name = "org.kde.plasma.pager";
+            config = {
+              General = {
+                currentDesktopSelected = "ShowDesktop";
+                displayedText = "Name";
+                showOnlyCurrentScreen = true;
+                showWindowOutlines = false;
+              };
+            };
+          }
+
+          # 7. Spacer
+          "org.kde.plasma.panelspacer"
+
+          # 8. Icons-Only Task Manager
+          {
+            name = "org.kde.plasma.icontasks";
+          }
+
+          # 9. Spacer
+          "org.kde.plasma.panelspacer"
+
+          # 10. System Tray
+          {
+            name = "org.kde.plasma.systemtray";
+          }
+
+          # 11. Digital Clock
+          {
+            digitalClock = {
+              time.format = "24h";
+            };
+          }
+        ];
+      }
+    ];
+
     # ── Shortcuts & Keybindings ─────────────────────────────────────────
     shortcuts = {
       # KWin window management
