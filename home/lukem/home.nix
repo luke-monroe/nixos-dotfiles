@@ -40,7 +40,7 @@ in
     # dev tools
     distrobox
     pkgs-unstable.antigravity-cli
-    pkgs-unstable.antigravity-ide
+    # pkgs-unstable.antigravity-ide
     pkgs-unstable.antigravity-hub
     
     # media
@@ -48,12 +48,12 @@ in
     #librepods
     discord
 
+    # office tools
     libreoffice
     onlyoffice-desktopeditors
     pkgs-unstable.obsidian
-    safeeyes
-    moonlight-qt
     
+    # media tools
     davinci-resolve
     video-downloader
     yt-dlp
@@ -64,11 +64,15 @@ in
 
     # utilities
     dropbox
-    incron
+    #incron -- automated davinci script
     ffmpeg
     calibre
     usbutils
     grsync
+
+    # other apps
+    safeeyes
+    moonlight-qt
 
     # kde apps
     kdePackages.kclock

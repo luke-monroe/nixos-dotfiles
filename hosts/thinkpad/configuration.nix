@@ -192,19 +192,17 @@
     kdePackages.qrca
   ];
   environment.systemPackages = with pkgs; [
+    nano
     vim
     git
     wget
-    gnome-keyring
-    ffmpegthumbnailer
-    playerctl
-    kdePackages.kate
-    kdePackages.partitionmanager
-    kdePackages.kcalc
-    kdePackages.dolphin
+    curl
     pciutils
-    poppler-utils
+    usbutils
+    lshw
+    inxi
     exfatprogs
+    kdePackages.partitionmanager
   ];
 
 
