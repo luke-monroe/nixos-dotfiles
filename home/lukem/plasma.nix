@@ -221,6 +221,15 @@
         "Stiffness" = 13;
       };
 
+      # MouseTiler KWin script
+      "kwinrc"."Script-mousetiler" = {
+        "popupGridAt" = 1;
+        "revealMargin" = 100;
+        "showHintHint" = false;
+        "tilerVisibility" = 3;
+        "verticalAlignment" = 0;
+      };
+
       # Window Rules
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".Description = "Window settings for zen";
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".desktops = "\\0";
