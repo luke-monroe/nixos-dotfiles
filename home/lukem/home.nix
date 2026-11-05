@@ -6,6 +6,16 @@ let
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
+
+  obsidianOpen = pkgs.writeShellApplication {
+    name = "obsidian-open";
+    runtimeInputs = [
+      pkgs.coreutils
+      pkgs.python3
+      pkgs-unstable.obsidian
+    ];
+    text = builtins.readFile ../../scripts/obsidian-open;
+  };
 in
 
 {
@@ -52,6 +62,7 @@ in
     libreoffice
     onlyoffice-desktopeditors
     pkgs-unstable.obsidian
+    obsidianOpen
     
     # media tools
     davinci-resolve
@@ -96,6 +107,27 @@ in
     #kdePackages.partitionmanager
     #kdePackages.system-monitor
   ];
+
+
+  # Make markdown automatically open in Obsidian
+  xdg.desktopEntries."obsidian-markdown-open" = {
+    name = "Open in Obsidian";
+    genericName = "Markdown Viewer";
+    exec = "${obsidianOpen}/bin/obsidian-open %F";
+    icon = "obsidian";
+    terminal = false;
+    categories = [ "Utility" "TextEditor" ];
+    mimeType = [ "text/markdown" "text/x-markdown" "application/x-md" ];
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/markdown" = [ "obsidian-markdown-open.desktop" ];
+      "text/x-markdown" = [ "obsidian-markdown-open.desktop" ];
+      "application/x-md" = [ "obsidian-markdown-open.desktop" ];
+    };
+  };
 
   home.shellAliases = {
     btw = "echo i use nixos, btw";

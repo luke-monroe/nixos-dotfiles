@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -eu
+
+if [ "$#" -ne 1 ]; then
+  echo "usage: obsidian-open <file>" >&2
+  exit 1
+fi
+
+target="$(realpath "$1")"
+
+# Search upward for a vault root (.obsidian)
+dir="$(dirname "$target")"
+vault_found=0
+while [ "$dir" != "/" ]; do
+  if [ -d "$dir/.obsidian" ]; then
+    vault_found=1
+    break
+  fi
+  dir="$(dirname "$dir")"
+done
+
+encoded="$(python3 -c "import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1]))" "$target")"
+
+if [ "$vault_found" -eq 1 ]; then
+  exec obsidian "obsidian://open?path=${encoded}"
+else
+  # If outside any vault, still attempt opening with the URI
+  exec obsidian "obsidian://open?path=${encoded}"
+fi
