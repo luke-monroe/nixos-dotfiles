@@ -142,10 +142,10 @@ in
     enable = true;
 		initExtra = ''
 		  # echo git config on start
-			[[ $- == *i* ]] && {
-				echo "Git profile:"
-				git config user.email
-			}
+			# [[ $- == *i* ]] && {
+			# 	echo "Git profile:"
+			# 	git config user.email
+			# }
 
 		'';
 	};
@@ -166,10 +166,10 @@ in
 
     initContent = ''
       # echo git config on start
-      [[ $- == *i* ]] && {
-        echo "Git profile:"
-        git config user.email
-      }
+      # [[ $- == *i* ]] && {
+      #   echo "Git profile:"
+      #   git config user.email
+      # }
     '';
   };
 
