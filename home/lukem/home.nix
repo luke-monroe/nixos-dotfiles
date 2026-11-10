@@ -59,7 +59,7 @@ in
     discord
 
     # office tools
-    libreoffice
+    #libreoffice
     onlyoffice-desktopeditors
     pkgs-unstable.obsidian
     obsidianOpen
