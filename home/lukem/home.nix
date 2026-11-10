@@ -30,7 +30,7 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode;
+    package = pkgs-unstable.vscode;
     profiles.default.extensions = with pkgs.vscode-extensions; [
       # continue.continue
       # Note: google-antigravity is installed directly via VS Code marketplace
