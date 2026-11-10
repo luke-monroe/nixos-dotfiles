@@ -125,7 +125,10 @@
       };
 
       # Window Rules
-      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".Description = "Window settings for zen";
+      kwinrulesrc."General".count = 2;
+      kwinrulesrc."General".rules = "391f588d-7088-4d68-90ad-b89bcd6aa4c8,12502159-752d-4e96-b51b-31bc40f84b0d";
+
+      kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".Description = "Zen Browser on all Desktops";
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".desktops = "\\0";
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".desktopsrule = 2;
       kwinrulesrc."391f588d-7088-4d68-90ad-b89bcd6aa4c8".types = 1;
