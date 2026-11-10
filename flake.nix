@@ -50,7 +50,7 @@
 
             users.lukem = import ./home/lukem/home.nix;
 
-            backupFileExtension = "backup";
+            backupCommand = "mv -f $1 $1.backup";
           };
         }
       ];
