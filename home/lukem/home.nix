@@ -88,12 +88,12 @@ in
     # kde apps
     kdePackages.kclock
     kdePackages.isoimagewriter
+    kdePackages.kcalc
     # these apps are already included with plasma
     #kdePackages.dolphin
     #kdePackages.dolphin-plugins
     #kdePackages.baloo-widgets
     #kdePackages.kate
-    #kdePackages.kcalc
     #kdePackages.ktexteditor
     #kdePackages.konsole
     #kdePackages.kwin-x11
